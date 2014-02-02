@@ -1,0 +1,27 @@
+{>"layouts/master" /}
+
+{<body}
+{#settings_data}
+    <h1>Settings</h1>
+    <form role="form" method="POST">
+    <input type="hidden" name="_csrf" value="{_csrf}">
+    <div class="form-group">
+        <label for="title">Admin Key</label>
+        <!-- 
+          --   display: none is here for safety 
+          --   (and would otherwise require !important
+          --   which messes up jquery.show!
+          -->
+        <input type="text"              
+               class="form-control obscure"
+               style="display: none;"
+               readonly=1
+               id="admin_key" 
+               name="admin_key" 
+               placeholder="xxx-xxx-xxx-xxx" 
+               value="{admin_key}">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+{/settings_data}
+{/body}

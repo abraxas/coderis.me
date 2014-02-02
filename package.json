@@ -22,7 +22,9 @@
     "makara": "~0.3.0",
     "node-markdown": "~0.1.1",
     "mongoose": "~3.8.6",
-    "mongoose-auto-increment": "~2.1.1"
+    "mongoose-auto-increment": "~2.1.1",
+    "node-uuid": "~1.4.1",
+    "cookies": "~0.4.0"
   },
   "devDependencies": {
     "mocha": "~1.17.0",

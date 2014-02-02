@@ -2,7 +2,7 @@
 
 
 var Page = require('../models/page');
-
+var admin_only = require("../lib/auth").admin_only;
 
 module.exports = function (app) {
 
@@ -38,18 +38,18 @@ module.exports = function (app) {
     });
 
 
-    app.get('/page/new', function(req,res) {
+    app.get('/page/new', admin_only,function(req,res) {
       res.render('page/new', {});      
     });
 
-    app.post('/page/new', function(req,res) {
+    app.post('/page/new', admin_only, function(req,res) {
       Page.create(req.body,function(err,pagesaved) {
           console.log("SAVED? " + err + " | " + pagesaved);
           res.redirect('/page/' + page.type + "/" + page.id);
       });
     });
 
-    app.get('/page/edit/:id', function(req,res) {
+    app.get('/page/edit/:id',admin_only, function(req,res) {
       Page.findById(req.params.id,function(err,page) {
         res.format({
             json: function () {
@@ -72,7 +72,7 @@ module.exports = function (app) {
         });
       })
     });
-    app.post('/page/edit/:id', function(req,res) {
+    app.post('/page/edit/:id',admin_only, function(req,res) {
       Page.findById(req.params.id,function(err,page) {
         console.log("SAVE? " + err + " | " + page);
         page.title = req.body.title;

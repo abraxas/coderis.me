@@ -3,7 +3,10 @@
 
 var kraken = require('kraken-js'),
     db = require("./lib/database"), 
+    auth = require("./lib/auth"),     
     app = {};
+
+var Cookie = require("./models/cookie");    
 
 
 app.configure = function configure(nconf, next) {
@@ -14,6 +17,9 @@ app.configure = function configure(nconf, next) {
 
 
 app.requestStart = function requestStart(server) {
+    server.locals.active_tab = 'home';
+    server.use(Cookie.init);  
+    server.use(auth.middleware);
     // Run before most express middleware has been registered.
 };
 
