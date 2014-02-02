@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="container">
-  <div class="row" id="header">
+  <div class="row" id="page-header">
     <h1>coderis.me</h1>
   </div>
 
@@ -20,10 +20,10 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Articles</a></li>
-        <li><a href="#">About Me</a></li>
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/articles">Articles</a></li>
+        <li><a href="/about_me">About Me</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

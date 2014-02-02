@@ -2,6 +2,7 @@
 
 
 var IndexModel = require('../models/index');
+var Page = require('../models/page');
 
 
 module.exports = function (app) {
@@ -10,8 +11,12 @@ module.exports = function (app) {
 
 
     app.get('/', function (req, res) {
-        
-        res.render('index', model);
+        model = {};      
+        Page.find({},function(err,pages) {          
+
+          model.pages = pages;
+          res.render('index', model);
+        });
         
     });
 

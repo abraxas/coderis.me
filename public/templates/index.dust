@@ -1,5 +1,14 @@
 {>"layouts/master" /}
 
 {<body}
-    <h1>{@pre type="content" key="greeting"/}</h1>
+
+{#pages}
+<div class="panel panel-default">
+  <div class="panel-heading">{title}</div>
+  <div class="panel-body">
+    {get_summary|s}
+  </div>
+</div>
+{/pages}
+
 {/body}
