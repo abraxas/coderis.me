@@ -16,9 +16,25 @@ module.exports = function (app) {
                 res.json(model);
             },
             html: function () {
-                res.render('pages', model);
+                res.render('index', model);
             }
         });
+    });
+
+    var page_helper = function(p,req,res) {
+      var model = {};
+      model.active_tab = p;      
+      Page.find({type: p},function(err,pages) {
+        model.pages = pages;
+        res.render('index',model);
+      });
+    }
+
+    app.get('/blog',function(req,res) {
+      page_helper('blog',req,res);
+    });
+    app.get('/articles',function(req,res) {
+      page_helper('articles',req,res);
     });
 
 
