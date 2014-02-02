@@ -1,0 +1,6 @@
+{>"layouts/master" /}
+
+{<body}
+<h1>{title}</h1>
+{render|s}
+{/body}

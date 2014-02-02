@@ -2,5 +2,7 @@
 
 
 requirejs.config({
-    paths: {}
+    paths: {
+      'epiceditor': '/components/epiceditor/epiceditor/js/epiceditor'
+    }
 });

@@ -2,13 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>{+title /}</title>
-    <link rel="stylesheet" href="css/app.css" />
+    <title>coderis.me</title>
+    <link rel="stylesheet" href="/css/app.css" />
+    <link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.min.css" />
 </head>
 <body>
-<div id="wrapper">
+<div class="container">
+  <div class="row" id="header">
+    <h1>coderis.me</h1>
+  </div>
+
+  <div class="row" id="navbar">
+  <nav class="navbar navbar-inverse" role="navigation">
+
+
+  <div class="container-fluid">
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Articles</a></li>
+        <li><a href="#">About Me</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+
+  </nav>
+  </div>
+
+  <div class="row" id="body">
     {+body /}
+  </div>
+
 </div>
-<script data-main="js/app" src="components/requirejs/require.js"></script>
+<script data-main="/js/app" src="/components/requirejs/require.js"></script>
 </body>
 </html>

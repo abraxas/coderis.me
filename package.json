@@ -19,7 +19,10 @@
     "less": "~1.6.1",
     "dustjs-linkedin": "~2.0.3",
     "dustjs-helpers": "~1.1.1",
-    "makara": "~0.3.0"
+    "makara": "~0.3.0",
+    "node-markdown": "~0.1.1",
+    "mongoose": "~3.8.6",
+    "mongoose-auto-increment": "~2.1.1"
   },
   "devDependencies": {
     "mocha": "~1.17.0",
