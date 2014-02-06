@@ -4,6 +4,7 @@
 var Settings = require('../models/settings');
 var Cookie = require('../models/cookie');
 var uuid = require('node-uuid');
+var admin_only = require("../lib/auth").admin_only;
 
 module.exports = function (app) {
 
@@ -30,13 +31,19 @@ module.exports = function (app) {
           settings.save(function () {
             res.send("Your new admin key is: " + key + ".  Do not lose it.");
             Cookie.key.set(key,Cookie.permanent);
-            Cookie.permanent_login.set(key,Cookie.permanent);            
+//            Cookie.permanent_login.set(1,Cookie.permanent);            
           });
         }
       });
     });
 
-    app.get('/admin/settings',function(req,res) {
+    app.get('/admin/auth/:uuid',function(req,res) {
+      Cookie.key.set(req.params.uuid,Cookie.permanent);
+//      Cookie.permanent_login.set(1,Cookie.permanent);
+      res.redirect('/admin/settings');
+    });
+
+    app.get('/admin/settings',admin_only,function(req,res) {
       var model = {};
       Settings.get(function(settings_data) {
           model.settings_data = settings_data;
