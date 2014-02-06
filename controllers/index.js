@@ -1,23 +1,17 @@
-'use strict';
+"use strict";
 
+var IndexModel = require("../models/index");
 
-var IndexModel = require('../models/index');
-var Page = require('../models/page');
+var Page = require("../models/page");
 
-
-module.exports = function (app) {
-
-    var model = new IndexModel();    
-
-    app.get('/', function (req, res) {
-        model = {};      
-        model.active_tab = 'home';
-        Page.find({},function(err,pages) {          
-
-          model.pages = pages;
-          res.render('index', model);
+module.exports = function(app) {
+    var model = new IndexModel();
+    app.get("/", function(req, res) {
+        model = {};
+        model.active_tab = "home";
+        Page.find({}, function(err, pages) {
+            model.pages = pages;
+            res.render("index", model);
         });
-        
     });
-
 };
