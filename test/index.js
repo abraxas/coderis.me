@@ -3,7 +3,7 @@
 'use strict';
 
 
-var app = require('../index'),
+var app = require('../coderis'),
     kraken = require('kraken-js'),
     request = require('supertest'),
     assert = require('assert');
