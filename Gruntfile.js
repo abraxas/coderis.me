@@ -4,6 +4,11 @@
 module.exports = function (grunt) {
 
     grunt.initConfig({
+        env : {
+            test : {
+                NODE_ENV : 'test'
+            }
+        },
         jshint: {
             files: ['controllers/**/*.js', 'lib/**/*.js', 'models/**/*.js'],
             options: {
@@ -91,6 +96,7 @@ module.exports = function (grunt) {
         }
     });
 
+    grunt.loadNpmTasks('grunt-env');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-requirejs'); 
     grunt.loadNpmTasks('grunt-contrib-clean');
@@ -102,6 +108,6 @@ module.exports = function (grunt) {
 
     grunt.registerTask('i18n', ['clean', 'makara', 'dustjs', 'clean:tmp']);
     grunt.registerTask('build', ['jshint', 'less', 'requirejs',  'copyto', 'i18n']);
-    grunt.registerTask('test', ['jshint', 'mochacli']);
+    grunt.registerTask('test', ['env:test', 'jshint', 'mochacli']);
 
 };
