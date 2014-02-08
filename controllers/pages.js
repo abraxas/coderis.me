@@ -63,7 +63,7 @@ module.exports = function(app) {
             console.log("SAVE? " + err + " | " + page);
             page.save(function(err, pagesaved) {
                 console.log("SAVED? " + err + " | " + pagesaved);
-                res.redirect("/page/" + page.type + "/" + page.id);
+                res.redirect("/page/" + page.id);
             });
         });
     });
