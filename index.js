@@ -21,6 +21,10 @@ app.requestStart = function requestStart(server) {
     server.use(Cookie.init);  
     server.use(auth.middleware);
     // Run before most express middleware has been registered.
+    server.use(function(req,res,next) {
+      res.locals.node_env = process.env.NODE_ENV;
+      next();
+    });
 };
 
 

@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/css/app.css" />
     <link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.min.css" />
 </head>
-<body>
+<body data-node_env="{node_env}">
 <div class="container">
   <div class="row" id="page-header">
     <h1>coderis.me</h1>
