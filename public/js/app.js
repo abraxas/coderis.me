@@ -8,7 +8,8 @@ require(['config',
     var app = {
         initialize: function () {
             // Your code here
-            require(['epiceditor','marked','jquery'],function(EpicEditor,marked,$) {
+            require(['marked','epiceditor','jquery'],function(marked,EpicEditor,$) {
+              console.log("INSIDE");
             
               if($('#epiceditor').length) {
               var editor = new EpicEditor({

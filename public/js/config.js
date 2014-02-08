@@ -2,7 +2,7 @@
 
 
 requirejs.config({
-    baseUrl: "../components",
+    baseUrl: "/components",
     paths: {
       'epiceditor': 'epiceditor/src/editor',
       'marked': 'marked/lib/marked',
@@ -10,9 +10,10 @@ requirejs.config({
     },
     shim: {
       'epiceditor': {
-        //exports: ['EpicEditor'],
-        deps: ['jquery']
+        exports: 'EpicEditor',
       },
-      'jquery':  ['jquery']
+      'marked': {
+        exports: 'marked'
+      }
     }
 });
