@@ -1,0 +1,22 @@
+{>"layouts/master" /}
+
+{<body}
+<table class="table table-striped">
+<thead>
+<tr>
+<th>ID</th>
+<th>Title</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+{#pages}
+<tr>
+<td>{id}</td>
+<td><a class="btn btn-link" href="/page/{id}">{title}</a> <a href="/page/{id}/edit"><span class="glyphicon glyphicon-edit"></span></a></td>
+<td>{type}</td>
+</tr>
+{/pages}
+</tbody>
+</table>
+{/body}

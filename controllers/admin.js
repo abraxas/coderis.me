@@ -2,6 +2,8 @@
 
 var Settings = require("../models/settings");
 
+var Page = require("../models/page");
+
 var Cookie = require("../models/cookie");
 
 var uuid = require("node-uuid");
@@ -51,6 +53,13 @@ module.exports = function(app) {
             html: function() {
                 res.render("admin", {});
             }
+        });
+    });
+    app.get("/admin/pages", function(req, res) {
+        var model = {};
+        Page.find({}, function(err, pages) {
+            model.pages = pages;
+            res.render("admin/pages", model);
         });
     });
 };
