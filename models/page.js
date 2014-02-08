@@ -47,7 +47,7 @@ var pageModel = function() {
         return md(this.content);
     };
     pageSchema.methods.get_summary = function() {
-        return md( this.summary || text_summary(this.content) );
+        return md(this.summary || text_summary(this.content));
     };
     return mongoose.model("Page", pageSchema);
 };
@@ -55,28 +55,25 @@ var pageModel = function() {
 //This below method is borrowed from drupal's text_summary method.
 //I stared at a printout and took what was useful, rewriting each piece from scratch.
 var text_summary = function(text) {
-  var size=600;
-  var delimiter = text.indexOf("<!-- break -->");
-  
-  if(delimiter >= 0) {
-    return text.substring(0,delimiter);
-  }
-
-  if(size > text.length) {
-    return text;
-  }
-
-  //now it gets fun
-  var summary = text.trunc(size);
-  var specials = ["\n",".","?","!"];
-  var rval = null
-  specials.forEach(function(s) {
-    var test = summary.lastIndexOf(s);
-    if(test > 0) {
-      rval = rval || summary.substring(0,test);
+    var size = 600;
+    var delimiter = text.indexOf("<!-- break -->");
+    if (delimiter >= 0) {
+        return text.substring(0, delimiter);
     }
-  });
-  return rval || summary;
-}
+    if (size > text.length) {
+        return text;
+    }
+    //now it gets fun
+    var summary = text.trunc(size);
+    var specials = [ "\n", ".", "?", "!" ];
+    var rval = null;
+    specials.forEach(function(s) {
+        var test = summary.lastIndexOf(s);
+        if (test > 0) {
+            rval = rval || summary.substring(0, test);
+        }
+    });
+    return rval || summary;
+};
 
 module.exports = new pageModel();
