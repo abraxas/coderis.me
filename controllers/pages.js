@@ -6,16 +6,7 @@ var admin_only = require("../lib/auth").admin_only;
 
 module.exports = function(app) {
     var model = new Page();
-    app.get("/pages/:type", function(req, res) {
-        res.format({
-            json: function() {
-                res.json(model);
-            },
-            html: function() {
-                res.render("index", model);
-            }
-        });
-    });
+
     var page_helper = function(p, req, res) {
         var model = {};
         model.active_tab = p;
@@ -41,7 +32,7 @@ module.exports = function(app) {
             res.redirect("/page/" + pagesaved.type + "/" + pagesaved.id);
         });
     });
-    app.get("/page/edit/:id", admin_only, function(req, res) {
+    app.get("/page/:id/edit", admin_only, function(req, res) {
         Page.findById(req.params.id, function(err, page) {
             res.format({
                 json: function() {
@@ -63,7 +54,7 @@ module.exports = function(app) {
             });
         });
     });
-    app.post("/page/edit/:id", admin_only, function(req, res) {
+    app.post("/page/:id/edit", admin_only, function(req, res) {
         Page.findById(req.params.id, function(err, page) {
             console.log("SAVE? " + err + " | " + page);
             page.title = req.body.title;
@@ -76,7 +67,7 @@ module.exports = function(app) {
             });
         });
     });
-    app.get("/page/:type/:id", function(req, res) {
+    app.get("/page/:id", function(req, res) {
         Page.findById(req.params.id, function(err, page) {
             res.format({
                 json: function() {
