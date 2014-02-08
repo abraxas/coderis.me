@@ -37,6 +37,9 @@ var pageModel = function() {
         },
         format: {
             type: String
+        },
+        route: {
+            type: String
         }
     });
     pageSchema.plugin(autoIncrement.plugin, {

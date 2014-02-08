@@ -17,6 +17,9 @@ module.exports = function(app) {
             res.render("index", model);
         });
     };
+
+
+
     app.get("/blog", function(req, res) {
         page_helper("blog", req, res);
     });
@@ -29,7 +32,7 @@ module.exports = function(app) {
     app.post("/page/new", admin_only, function(req, res) {
         Page.create(req.body, function(err, pagesaved) {
             console.log("SAVED? " + err + " | " + pagesaved);
-            res.redirect("/page/" + pagesaved.type + "/" + pagesaved.id);
+            res.redirect("/page/" + pagesaved.id);
         });
     });
     app.get("/page/:id/edit", admin_only, function(req, res) {
@@ -60,6 +63,7 @@ module.exports = function(app) {
             page.title = req.body.title;
             page.content = req.body.content;
             page.type = req.body.type;
+            page.route = req.body.route;
             console.log("SAVE? " + err + " | " + page);
             page.save(function(err, pagesaved) {
                 console.log("SAVED? " + err + " | " + pagesaved);
@@ -67,8 +71,8 @@ module.exports = function(app) {
             });
         });
     });
-    app.get("/page/:id", function(req, res) {
-        Page.findById(req.params.id, function(err, page) {
+
+    var view_page = function(req,res,err,page) {
             res.format({
                 json: function() {
                     if (err) {
@@ -87,6 +91,27 @@ module.exports = function(app) {
                     }
                 }
             });
+    };
+    var get_page =  function(req, res) {
+        Page.findById(req.params.id, function(err, page) {
+            view_page(req,res,err,page);
         });
+    };
+    app.get("/page/:id",get_page);
+
+    app.get(/^.*$/,function(req,res,next) {
+      var uri = req.path;
+      console.log("OORI = " + uri);
+      Page.findOne({route: uri},function(err,page) {
+          console.log("ERR IS: " + err);
+          console.log("PAGE IS: " + page);
+          if(!page) {
+             next(); 
+          }
+          else {
+              view_page(req,res,err,page);
+          }
+      });
     });
+    
 };

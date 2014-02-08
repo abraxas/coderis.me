@@ -16,10 +16,19 @@
     <label for="type">Type</label>
     <input type="text"
            class="form-control"
-           id="title" 
+           id="path" 
            name="type" 
-           placeholder="Title" 
+           placeholder="Type" 
            value="{type}">
+  </div>
+<div class="form-group">
+    <label for="type">Route</label>
+    <input type="text"
+           class="form-control"
+           id="route" 
+           name="route" 
+           placeholder="route" 
+           value="{route}">
   </div>
   <div class="form-group">
     <label for="content">Content</label>
