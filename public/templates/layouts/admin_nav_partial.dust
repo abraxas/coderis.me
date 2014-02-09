@@ -1,0 +1,15 @@
+{?admin}
+<nav class="small navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+  <div class="container">
+      <ul class="nav navbar-nav">
+        <li {@eq key=active_tab value="pages"}class="active"{/eq}><a href="/admin/pages">Pages</a></li>
+        <li {@eq key=active_tab value="settings"}class="active"{/eq}><a href="/admin/settings">Settings</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/admin/logout">Logout</a></li>
+      </ul>
+  </div>
+</nav>
+<div class="space-for-admin-navbar">
+
+{/admin}
