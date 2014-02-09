@@ -19,7 +19,6 @@ app.configure = function configure(nconf, next) {
 app.requestStart = function requestStart(server) {
     server.locals.active_tab = 'home';
     server.use(Cookie.init);  
-    server.use(auth.middleware);
     // Run before most express middleware has been registered.
     server.use(function(req,res,next) {
       res.locals.node_env = process.env.NODE_ENV;
@@ -29,6 +28,7 @@ app.requestStart = function requestStart(server) {
 
 
 app.requestBeforeRoute = function requestBeforeRoute(server) {
+    server.use(auth.middleware);
     // Run before any routes have been added.
 };
 
