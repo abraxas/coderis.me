@@ -3,10 +3,11 @@
 var mongoose = require("mongoose"), Schema = mongoose.Schema;
 
 var uuid = require("node-uuid");
+
 var crypto = require("crypto");
 
-var hash = function (passwd, salt) {
-    return crypto.createHmac('sha256', salt).update(passwd).digest('hex');
+var hash = function(passwd, salt) {
+    return crypto.createHmac("sha256", salt).update(passwd).digest("hex");
 };
 
 var settingsModel = function() {
@@ -15,17 +16,17 @@ var settingsModel = function() {
             type: String
         },
         username: {
-             type: String
+            type: String
         },
         hashed_password: {
-             type: String
+            type: String
         },
         salt: {
-             type: String,
-             default: uuid.v1
-        },
+            type: String,
+            "default": uuid.v1
+        }
     });
-    settingsSchema.methods.setPassword = function (pass) {
+    settingsSchema.methods.setPassword = function(pass) {
         this.salt = uuid.v1();
         this.hashed_password = hash(pass, this.salt);
     };
@@ -41,7 +42,6 @@ var settingsModel = function() {
         });
     });
     return mongoose.model("Settings", settingsSchema);
-
 };
 
 module.exports = new settingsModel();
