@@ -9,10 +9,9 @@ var Cookie = require("../models/cookie");
 var uuid = require("node-uuid");
 
 var auth = require("../lib/auth");
-
 var authorize = auth.authorize;
-
 var authenticate = auth.authenticate;
+var logout = auth.logout;
 
 module.exports = function(app) {
     app.get("/admin/claim", function(req, res) {
@@ -51,7 +50,13 @@ module.exports = function(app) {
         authenticate(req, res, req.body);
         res.redirect("/admin/settings");
     });
+    app.get("/admin/logout", function(req, res) {
+        logout(req,res);
+        res.redirect("/");
+    });
+
     app.get("/admin/settings", authorize, function(req, res) {
+        res.locals.active_tab = 'settings'
         var model = {};
         Settings.get(function(settings_data) {
             model.settings_data = settings_data;
@@ -86,6 +91,7 @@ module.exports = function(app) {
     });
     app.get("/admin/pages", function(req, res) {
         var model = {};
+        res.locals.active_tab = 'pages'
         Page.find({}, function(err, pages) {
             model.pages = pages;
             res.render("admin/pages", model);

@@ -8,6 +8,7 @@
 </head>
 <body data-node_env="{node_env}">
 <div class="container">
+  {>"layouts/admin_nav_partial"/}
   <div class="row" id="page-header">
     <h1>coderis.me</h1>
   </div>
