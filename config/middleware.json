@@ -5,35 +5,9 @@
             "500": "errors/500",
             "503": "errors/503"
         },
-          "session": {
-            "module": "connect-redis",
-            "config": {
-              "host": "localhost",
-              "port": 6379,
-              "db": 1
-            },
-            "secret": "30ba037262ad11e3ba8e080027129698"
-        }       
-//      "appsec": {
-//        "csrf": true,
-//        "csp": false,
-//        "p3p": false,
-//        "xframe": "SAMEORIGIN"
-//      },
-//
-//      "compiler": {
-//          "dust": "templates",
-//          "less": "css"
-//      },
-//
-//      "session": {
-//          "module": "memory",
-//          "secret": "bd2a2a2330d0aaa89247a058fad6b4874f601657"
-//      },
-//
-//      "static": {
-//          "srcRoot": "path:./public",
-//          "rootPath": "path:./.build"
-//      }
+        "session": {
+          "module": "memory",
+          "secret": "30ba037262ad11e3ba8e080027129698"
+        }
     }
 }

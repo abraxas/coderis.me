@@ -2,7 +2,7 @@
 
 var Page = require("../models/page");
 
-var admin_only = require("../lib/auth").admin_only;
+var authorize = require("../lib/auth").authorize;
 
 module.exports = function(app) {
     var model = new Page();
@@ -22,16 +22,16 @@ module.exports = function(app) {
     app.get("/articles", function(req, res) {
         page_helper("articles", req, res);
     });
-    app.get("/page/new", admin_only, function(req, res) {
+    app.get("/page/new", authorize, function(req, res) {
         res.render("page/new", {});
     });
-    app.post("/page/new", admin_only, function(req, res) {
+    app.post("/page/new", authorize, function(req, res) {
         Page.create(req.body, function(err, pagesaved) {
             console.log("SAVED? " + err + " | " + pagesaved);
             res.redirect("/page/" + pagesaved.id);
         });
     });
-    app.get("/page/:id/edit", admin_only, function(req, res) {
+    app.get("/page/:id/edit", authorize, function(req, res) {
         Page.findById(req.params.id, function(err, page) {
             res.format({
                 json: function() {
@@ -53,7 +53,7 @@ module.exports = function(app) {
             });
         });
     });
-    app.post("/page/:id/edit", admin_only, function(req, res) {
+    app.post("/page/:id/edit", authorize, function(req, res) {
         Page.findById(req.params.id, function(err, page) {
             console.log("SAVE? " + err + " | " + page);
             page.title = req.body.title;
