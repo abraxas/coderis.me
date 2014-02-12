@@ -10,7 +10,7 @@ require(['config',
             // Your code here
             require(['marked','epiceditor','jquery'],function(marked,EpicEditor,$) {
               console.log("INSIDE");
-            
+
               if($('#epiceditor').length) {
               var editor = new EpicEditor({
                   basePath: '/components/epiceditor/epiceditor',
