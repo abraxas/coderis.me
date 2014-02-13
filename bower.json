@@ -6,6 +6,7 @@
     "jquery": "~2.1.0",
     "epiceditor": "~0.2.2",
     "requirejs": "~2.1.10",
-    "marked": "~0.3.1"
+    "marked": "~0.3.1",
+    "datatables": "~1.9.4"
   }
 }

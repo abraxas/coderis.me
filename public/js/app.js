@@ -8,8 +8,21 @@ require(['config',
     var app = {
         initialize: function () {
             // Your code here
-            require(['marked','epiceditor','jquery'],function(marked,EpicEditor,$) {
+            require(['marked','epiceditor','jquery','datatables-bootstrap3'],function(marked,EpicEditor,$,dt) {
               console.log("INSIDE");
+
+              var dtab = $('.data-table').dataTable(
+              {
+                "sDom": "<'row'<'span8'l><'span8'f>r>t<'row'<'span8'i><'span8'p>>",
+                "sPaginationType": "bs_normal"                
+              }
+              );
+              $("tfoot input").keyup( function () {
+                /* Filter on the column (the index) of this element */
+                dtab.fnFilter( this.value, $("tfoot input").index(this) );
+                } );
+
+
 
               if($('#epiceditor').length) {
               var editor = new EpicEditor({
