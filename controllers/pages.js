@@ -31,42 +31,7 @@ module.exports = function(app) {
             res.redirect("/page/" + pagesaved.id);
         });
     });
-    app.get("/page/:id/edit", authorize, function(req, res) {
-        Page.findById(req.params.id, function(err, page) {
-            res.format({
-                json: function() {
-                    if (err) {
-                        res.json({
-                            error: err
-                        });
-                    } else {
-                        res.json(page);
-                    }
-                },
-                html: function() {
-                    if (err) {
-                        res.send(500, err);
-                    } else {
-                        res.render("page/edit", page);
-                    }
-                }
-            });
-        });
-    });
-    app.post("/page/:id/edit", authorize, function(req, res) {
-        Page.findById(req.params.id, function(err, page) {
-            console.log("SAVE? " + err + " | " + page);
-            page.title = req.body.title;
-            page.content = req.body.content;
-            page.type = req.body.type;
-            page.route = req.body.route;
-            console.log("SAVE? " + err + " | " + page);
-            page.save(function(err, pagesaved) {
-                console.log("SAVED? " + err + " | " + pagesaved);
-                res.redirect("/page/" + page.id);
-            });
-        });
-    });
+    
     var view_page = function(req, res, err, page) {
         res.format({
             json: function() {
