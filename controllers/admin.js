@@ -99,8 +99,6 @@ module.exports = function(app) {
             res.render("admin/pages", model);
         });
     });
-
-
     app.get("/admin/pages/:id/edit", authorize, function(req, res) {
         Page.findById(req.params.id, function(err, page) {
             res.format({
@@ -121,6 +119,13 @@ module.exports = function(app) {
                     }
                 }
             });
+        });
+    });
+    app.post("/admin/pages/:id/delete", authorize, function(req, res) {
+        Page.remove({
+            _id: req.params.id
+        }, function(err) {
+            res.redirect("/admin/pages");
         });
     });
     app.post("/admin/pages/:id/edit", authorize, function(req, res) {

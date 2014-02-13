@@ -8,24 +8,33 @@
 <th>Title</th>
 <th>Type</th>
 <th>Route</th>
+<th>Action</th>
 </tr>
 </thead>
 <tbody>
 {#pages}
 <tr>
 <td>{id}</td>
-<td><a class="btn btn-link" href="/page/{id}">{title}</a> <a href="/admin/pages/{id}/edit"><span class="glyphicon glyphicon-edit"></span></a></td>
+<td><a class="btn btn-link" href="/page/{id}">{title}</a> </span></a></td>
 <td>{type}</td>
 <td>{route}</td>
+<td>
+<a class="btn btn-link" href="/admin/pages/{id}/edit"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+<form style="display: inline" method="POST" action="/admin/pages/{id}/delete">
+<input type="hidden" name="_csrf" value="{_csrf}">
+<a class="btn btn-link" onClick="$(this).closest('form').submit()" ><span class="glyphicon glyphicon-trash"></span> Delete</a>
+</form>
+</td>
 </tr>
 {/pages}
 </tbody>
 <tfoot>
 <tr>
-<th><input type=text></th>
-<th><input type=text></th>
-<th><input type=text></th>
-<th><input type=text></th>
+<td><input type=text></td>
+<td><input type=text></td>
+<td><input type=text></td>
+<td><input type=text></td>
+<td></td>
 </tr>
 </tfoot>
 
