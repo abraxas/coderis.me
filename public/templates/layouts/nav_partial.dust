@@ -1,0 +1,11 @@
+     <ul class="nav navbar-nav">
+        <li 
+        {@eq key=active_tab value="home"}class="active"{/eq}>
+        <a href="/">Home</a></li>
+        <li 
+        {@eq key=active_tab value="blog"}class="active"{/eq}>
+        <a href="/blog">Blog</a></li>
+        <li 
+        {@eq key=active_tab value="about"}class="active"{/eq}>
+        <a href="/about">About Me</a></li>
+      </ul>
