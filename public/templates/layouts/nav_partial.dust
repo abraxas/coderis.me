@@ -1,4 +1,4 @@
-     <ul class="nav navbar-nav">
+     <ul class="nav navbar-nav navbar-right">
         <li 
         {@eq key=active_tab value="home"}class="active"{/eq}>
         <a href="/">Home</a></li>

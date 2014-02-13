@@ -8,25 +8,33 @@
     <link rel="stylesheet" href="/components/datatables-bootstrap3/BS3/assets/css/datatables.css" />
 </head>
 <body data-node_env="{node_env}">
+ <div class="" id="page-header">
+<div class="container">
+    <div class="col-sm-6">
+    <h1>coderis.me</h1>
+
+    </div>
+    <div class="col-sm-6">
+    <!-- div class="row" id="navbar" -->
+      <nav id="base-nav" class="navbar navbar-right nav navbar-nav" role="navigation">
+
+
+      <div class="container-fluid">
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          {>"layouts/nav_partial"/}
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+
+      </nav>
+    <!-- /div -->
+    </div>
+  </div>
+  </div>
+
 <div class="container">
   {>"layouts/admin_nav_partial"/}
-  <div class="row" id="page-header">
-    <h1>coderis.me</h1>
-  </div>
-
-  <div class="row" id="navbar">
-  <nav class="navbar navbar-inverse" role="navigation">
-
-
-  <div class="container-fluid">
-
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      {>"layouts/nav_partial"/}
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-
-  </nav>
-  </div>
+ 
 
   <div class="row" id="body">
     {+body /}
