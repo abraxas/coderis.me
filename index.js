@@ -11,6 +11,7 @@ var Cookie = require("./models/cookie");
 
 app.configure = function configure(nconf, next) {
     db.config(nconf.get("databaseConfig"));  
+    auth.config(nconf.get("authConfig"));  
     // Async method run on startup.
     next(null);
 };

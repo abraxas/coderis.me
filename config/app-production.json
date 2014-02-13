@@ -44,6 +44,9 @@
 "databaseConfig": {
   "host": "localhost",
   "database": "coderis"
+},
+"authConfig": {
+  "always_admin": false
 }
 
 }
