@@ -1,21 +1,46 @@
 @import url(http://fonts.googleapis.com/css?family=Droid+Sans);
+@import url(http://fonts.googleapis.com/css?family=Droid+Serif);
+@import url(http://fonts.googleapis.com/css?family=Lato:300);
+@import url(http://fonts.googleapis.com/css?family=Michroma);
 
-body {
-  font-family: 'Droid Sans', sans-serif;
+
+//COLORS
+@base-color: #402210;
+@second-color: spin(@base-color, 45);
+@accent-color: lighten(saturate(spin(@base-color, 180),40%),20%);
+@accent-two-color: lighten(saturate(spin(@base-color, 135),40%),20%);
+
+
+//CALCULATED COLORS
+@body-background: desaturate(lighten(@second-color,87%),30%);
+@body-text: @base-color;
+
+@title-text: lighten(saturate(@base-color,20%),10%);
+@title-pop: @accent-color;
+
+@panel-header-text-color: saturate(@base-color,10%);
+@panel-header-background-color: lighten(saturate(@second-color,20%),75%);
+@panel-body-background-color: lighten(desaturate(@base-color,20%),85%);
+@panel-header-background-color: lighten(desaturate(@base-color,20%),85%);
+@panel-body-text-color: darken(@base-color,20%);
+@panel-bottom-border-color: desaturate(lighten(@base-color,70%),40%);
+
+//BODY STUFF
+html body {
+  background-color: @body-background;
+  color: @body-text;
+  font-family: 'Droid Serif', serif;
 }
 
 
+//HEADER STUFF
 #page-header {
   height: 150px;
-//  background-color: #668899;
   vertical-align: middle !important;
   position: relative;
   z-index: 1;
-
 }
 
-@import url(http://fonts.googleapis.com/css?family=Lato:300);
-@import url(http://fonts.googleapis.com/css?family=Montserrat);
 
 div#page-header:before {
   border-bottom: 1px solid grey;
@@ -36,7 +61,13 @@ div#page-header:before {
 }
 
 #page-header h1 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Michroma', sans-serif;
+  color: @title-text;
+}
+
+#page-header h1 .pop {
+  color: @title-pop;
+  font-size: 0.5em;
 }
 
 #page-header nav {
@@ -45,6 +76,43 @@ div#page-header:before {
   font-weight: 300;
 }
 
+
+
+
+//PANEL STUFF
+body div.panel-default div.panel:before {
+  border-bottom: 1px solid grey;
+  width: 800px;
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  height: 1px;
+
+}
+body div.panel {
+  border: 0;
+//  border-bottom: 1px solid @panel-bottom-border-color;
+}
+
+body div.panel-default div.panel-heading {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: @panel-header-text-color;
+  background-color: @panel-header-background-color;
+//  padding: 5px 15px;
+}
+body div.panel-default div.panel-body {
+  background-color: @panel-body-background-color;
+  color: @panel-body-text-color;
+
+}
+
+
+//ADMIN NAV STUFF
 .small .navbar-nav > li > a {
     padding-top:5px !important; 
     padding-bottom:5px !important;
@@ -55,6 +123,7 @@ div#page-header:before {
   margin-top: 20px;
 }
 
+//NAV STUFF
 #base-nav div {
   margin-top: 10px;
 }
@@ -65,7 +134,7 @@ div#page-header:before {
 
 
 
-
+//TABLE STUFF
 div.dataTables_length label {
     width: 460px;
     float: left;
