@@ -52,6 +52,14 @@ var pageModel = function() {
     pageSchema.methods.get_summary = function() {
         return md(this.summary || text_summary(this.content));
     };
+    pageSchema.methods.uri = function() {
+        if(this.route) {
+            return this.route;
+        }
+        else {
+            return "/page/" + this._id;
+        }
+    };
     return mongoose.model("Page", pageSchema);
 };
 
