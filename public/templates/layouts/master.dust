@@ -37,7 +37,12 @@
  
 
   <div class="row" id="body">
-    {+body /}
+    <div class="col-sm-9">
+      {+body /}
+    </div>
+    <div class="col-sm-3">
+      
+    </div>
   </div>
 
 </div>
