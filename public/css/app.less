@@ -1,35 +1,51 @@
 @import url(http://fonts.googleapis.com/css?family=Droid+Sans);
 @import url(http://fonts.googleapis.com/css?family=Droid+Serif);
-@import url(http://fonts.googleapis.com/css?family=Lato:300);
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400);
 @import url(http://fonts.googleapis.com/css?family=Michroma);
+
+
+//Fontage
+.font-droid-serif { font-family: 'Droid Serif', serif; }
+.font-droid-sans { font-family: 'Droid Sans', sans-serif; }
+.font-lato { font-family: 'Lato', sans-serif; }
+.font-michroma { font-family: 'Michroma', sans-serif; }
 
 
 //COLORS
 @base-color: #402210;
-@second-color: spin(@base-color, 45);
+@second-color: spin(@base-color, 30);
+@third-color: spin(@base-color, -30);
 @accent-color: lighten(saturate(spin(@base-color, 180),40%),20%);
 @accent-two-color: lighten(saturate(spin(@base-color, 135),40%),20%);
 
 
 //CALCULATED COLORS
-@body-background: desaturate(lighten(@second-color,87%),30%);
+@body-background: desaturate(lighten(@second-color,80%),30%);
 @body-text: @base-color;
 
 @title-text: lighten(saturate(@base-color,20%),10%);
 @title-pop: @accent-color;
 
-@panel-header-text-color: saturate(@base-color,10%);
-@panel-header-background-color: lighten(saturate(@second-color,20%),75%);
-@panel-body-background-color: lighten(desaturate(@base-color,20%),85%);
-@panel-header-background-color: lighten(desaturate(@base-color,20%),85%);
+@panel-header-text-color: lighten(saturate(@third-color,20%),10%);
+@panel-header-background-color: @body-background;
+//@panel-body-background-color: lighten(desaturate(@base-color,20%),85%);
+@panel-body-background-color: @body-background;
 @panel-body-text-color: darken(@base-color,20%);
 @panel-bottom-border-color: desaturate(lighten(@base-color,70%),40%);
+
+//Font ties
+.body-font       {  .font-droid-serif; }
+.header-nav-font {  .font-lato; font-weight: 300;    }
+.title-font      {  .font-michroma;    }
+.panel-font      {  .font-lato; font-weight: 400;    }
+
+
 
 //BODY STUFF
 html body {
   background-color: @body-background;
   color: @body-text;
-  font-family: 'Droid Serif', serif;
+  .body-font;
 }
 
 
@@ -39,6 +55,11 @@ html body {
   vertical-align: middle !important;
   position: relative;
   z-index: 1;
+}
+
+#page-header div {
+  font-size: 1.2em;
+
 }
 
 
@@ -61,8 +82,9 @@ div#page-header:before {
 }
 
 #page-header h1 {
-  font-family: 'Michroma', sans-serif;
+  .title-font;
   color: @title-text;
+  font-size: 2.0em;
 }
 
 #page-header h1 .pop {
@@ -71,8 +93,8 @@ div#page-header:before {
 }
 
 #page-header nav {
+  .header-nav-font;
   font-size: 17px;
-  font-family: 'Lato', sans-serif;
   font-weight: 300;
 }
 
@@ -95,16 +117,17 @@ body div.panel-default div.panel:before {
 }
 body div.panel {
   border: 0;
-//  border-bottom: 1px solid @panel-bottom-border-color;
+  bow-shadow: 0px;
 }
 
 body div.panel-default div.panel-heading {
-  font-size: 1.1em;
+  font-size: 1.5em;
   font-weight: bold;
   color: @panel-header-text-color;
   background-color: @panel-header-background-color;
-//  padding: 5px 15px;
+  .panel-font;
 }
+
 body div.panel-default div.panel-body {
   background-color: @panel-body-background-color;
   color: @panel-body-text-color;
