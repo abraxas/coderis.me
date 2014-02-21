@@ -4,7 +4,11 @@
 
 {#pages}
 <div class="panel panel-default">
-  <div class="panel-heading">{title}</div>
+  <div class="panel-heading">
+  <a href="{uri}">
+  {title}
+  </a>
+  </div>
   <div class="panel-body">
     {get_summary|s}
   </div>
