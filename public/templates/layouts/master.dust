@@ -11,7 +11,7 @@
  <div class="" id="page-header">
 <div class="container">
     <div class="col-sm-6">
-    <h1>coderis<span class="pop">.me</span></h1>
+    <h1><a href="/">coderis<span class="pop">.me</span></a></h1>
 
     </div>
     <div class="col-sm-6">
@@ -37,7 +37,12 @@
  
 
   <div class="row" id="body">
-    {+body /}
+    <div class="col-sm-9">
+      {+body /}
+    </div>
+    <div class="col-sm-3">
+      
+    </div>
   </div>
 
 </div>
