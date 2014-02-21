@@ -40,7 +40,10 @@ var pageModel = function() {
         },
         route: {
             type: String
-        }
+        },
+        front_page: {
+            type: Boolean
+        },
     });
     pageSchema.plugin(autoIncrement.plugin, {
         model: "Page",

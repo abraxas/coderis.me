@@ -9,7 +9,7 @@ module.exports = function(app) {
     app.get("/", function(req, res) {
         model = {};
         model.active_tab = "home";
-        Page.find({}, function(err, pages) {
+        Page.find({front_page: true}, function(err, pages) {
             model.pages = pages;
             res.render("index", model);
         });

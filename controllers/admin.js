@@ -135,6 +135,7 @@ module.exports = function(app) {
             page.content = req.body.content;
             page.type = req.body.type;
             page.route = req.body.route;
+            page.front_page = req.body.front_page;
             console.log("SAVE? " + err + " | " + page);
             page.save(function(err, pagesaved) {
                 console.log("SAVED? " + err + " | " + pagesaved);
